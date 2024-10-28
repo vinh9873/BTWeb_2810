@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thêm/Sửa Category</title>
+</head>
+<body>
+    <h2 th:text="${category.isEdit} ? 'Chỉnh sửa Category' : 'Thêm mới Category'"></h2>
+    <form th:action="@{/admin/categories/saveOrUpdate}" th:object="${category}" method="post">
+        <div>
+            <label>Tên Category:</label>
+            <input type="text" th:field="*{name}" required />
+        </div>
+        <div>
+            <label>Mô tả:</label>
+            <textarea th:field="*{description}"></textarea>
+        </div>
+        <div>
+            <button type="submit">Lưu</button>
+            <a th:href="@{/admin/categories}">Hủy</a>
+        </div>
+    </form>
+</body>
+</html>
